@@ -1,0 +1,52 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <!-- Neon Cyberpunk: Deep synth-night void, electric cyan key borders, hot magenta active -->
+    <LinearGradientBrush x:Key="WindowBrush" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#090716" Offset="0" />
+        <GradientStop Color="#05040E" Offset="1" />
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="HeaderAccentBrush" StartPoint="0,0" EndPoint="1,0">
+        <GradientStop Color="#00F0FF" Offset="0" />
+        <GradientStop Color="#FF2A85" Offset="1" />
+    </LinearGradientBrush>
+    <SolidColorBrush x:Key="BorderBrush" Color="#0891B2" />
+    <SolidColorBrush x:Key="KeyDeckBrush" Color="#04030B" />
+    <SolidColorBrush x:Key="KeyBorderBrush" Color="#06B6D4" />
+    <LinearGradientBrush x:Key="KeyBrush" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#14102E" Offset="0" />
+        <GradientStop Color="#0D0A21" Offset="1" />
+    </LinearGradientBrush>
+    <SolidColorBrush x:Key="KeyHoverBrush" Color="#1D1947" />
+    <SolidColorBrush x:Key="KeyPressedBrush" Color="#09071A" />
+    <SolidColorBrush x:Key="KeyBevelBrush" Color="#060414" />
+    <SolidColorBrush x:Key="KeyTopHighlightBrush" Color="#2800F0FF" />
+    <LinearGradientBrush x:Key="ModifierBrush" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#24103C" Offset="0" />
+        <GradientStop Color="#180A2A" Offset="1" />
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="EnterKeyBrush" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#FF2A85" Offset="0" />
+        <GradientStop Color="#DB2777" Offset="1" />
+    </LinearGradientBrush>
+    <SolidColorBrush x:Key="EnterKeyHoverBrush" Color="#FF5AA3" />
+    <SolidColorBrush x:Key="EnterKeyTextBrush" Color="#FFFFFF" />
+    <SolidColorBrush x:Key="TextBrush" Color="#E0FBFF" />
+    <SolidColorBrush x:Key="SubtleTextBrush" Color="#67E8F9" />
+    <SolidColorBrush x:Key="AccentBrush" Color="#FF2A85" />
+    <SolidColorBrush x:Key="AccentTextBrush" Color="#FFFFFF" />
+    <SolidColorBrush x:Key="ArmedBackgroundBrush" Color="#0B2C3D" />
+    <SolidColorBrush x:Key="ArmedBorderBrush" Color="#00F0FF" />
+    <SolidColorBrush x:Key="SuggestionBrush" Color="#0A081C" />
+    <SolidColorBrush x:Key="HeaderPillBrush" Color="#0891B2" />
+    <SolidColorBrush x:Key="SpaceBarAccentBrush" Color="#00F0FF" />
+    <SolidColorBrush x:Key="ControlBackgroundBrush" Color="#110C29" />
+    <SolidColorBrush x:Key="ControlBorderBrush" Color="#06B6D4" />
+
+    <Color x:Key="KeyGlowColor">#00F0FF</Color>
+    <sys:Double x:Key="KeyGlowOpacity">0.70</sys:Double>
+    <sys:Double x:Key="KeyGlowBlur">14</sys:Double>
+    <Thickness x:Key="KeyBorderThickness">1.2</Thickness>
+    <CornerRadius x:Key="KeyCornerRadius">7</CornerRadius>
+    <sys:String x:Key="ThemeBadgeText">NEON</sys:String>
+</ResourceDictionary>

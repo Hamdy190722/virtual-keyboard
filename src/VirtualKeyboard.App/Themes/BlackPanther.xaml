@@ -1,0 +1,53 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <!-- Black Panther (Marvel): Wakandan carbon chassis, pitch deck, kinetic vibranium violet -->
+    <LinearGradientBrush x:Key="WindowBrush" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#0C0A14" Offset="0" />
+        <GradientStop Color="#07060C" Offset="1" />
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="HeaderAccentBrush" StartPoint="0,0" EndPoint="1,0">
+        <GradientStop Color="#7E22CE" Offset="0" />
+        <GradientStop Color="#C084FC" Offset="0.5" />
+        <GradientStop Color="#7E22CE" Offset="1" />
+    </LinearGradientBrush>
+    <SolidColorBrush x:Key="BorderBrush" Color="#32264D" />
+    <SolidColorBrush x:Key="KeyDeckBrush" Color="#050409" />
+    <SolidColorBrush x:Key="KeyBorderBrush" Color="#423266" />
+    <LinearGradientBrush x:Key="KeyBrush" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#1B162B" Offset="0" />
+        <GradientStop Color="#131020" Offset="1" />
+    </LinearGradientBrush>
+    <SolidColorBrush x:Key="KeyHoverBrush" Color="#2C2246" />
+    <SolidColorBrush x:Key="KeyPressedBrush" Color="#100D1B" />
+    <SolidColorBrush x:Key="KeyBevelBrush" Color="#090711" />
+    <SolidColorBrush x:Key="KeyTopHighlightBrush" Color="#26FFFFFF" />
+    <LinearGradientBrush x:Key="ModifierBrush" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#24193D" Offset="0" />
+        <GradientStop Color="#1A122E" Offset="1" />
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="EnterKeyBrush" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#A855F7" Offset="0" />
+        <GradientStop Color="#7E22CE" Offset="1" />
+    </LinearGradientBrush>
+    <SolidColorBrush x:Key="EnterKeyHoverBrush" Color="#C084FC" />
+    <SolidColorBrush x:Key="EnterKeyTextBrush" Color="#FFFFFF" />
+    <SolidColorBrush x:Key="TextBrush" Color="#F5F3FF" />
+    <SolidColorBrush x:Key="SubtleTextBrush" Color="#B6A7D9" />
+    <SolidColorBrush x:Key="AccentBrush" Color="#A855F7" />
+    <SolidColorBrush x:Key="AccentTextBrush" Color="#FFFFFF" />
+    <SolidColorBrush x:Key="ArmedBackgroundBrush" Color="#2D1A45" />
+    <SolidColorBrush x:Key="ArmedBorderBrush" Color="#C084FC" />
+    <SolidColorBrush x:Key="SuggestionBrush" Color="#0E0B18" />
+    <SolidColorBrush x:Key="HeaderPillBrush" Color="#3C2D60" />
+    <SolidColorBrush x:Key="SpaceBarAccentBrush" Color="#C084FC" />
+    <SolidColorBrush x:Key="ControlBackgroundBrush" Color="#161124" />
+    <SolidColorBrush x:Key="ControlBorderBrush" Color="#47366E" />
+
+    <Color x:Key="KeyGlowColor">#C084FC</Color>
+    <sys:Double x:Key="KeyGlowOpacity">0.60</sys:Double>
+    <sys:Double x:Key="KeyGlowBlur">12</sys:Double>
+    <Thickness x:Key="KeyBorderThickness">1.1</Thickness>
+    <CornerRadius x:Key="KeyCornerRadius">7</CornerRadius>
+    <sys:String x:Key="ThemeBadgeText">WAKANDA</sys:String>
+</ResourceDictionary>

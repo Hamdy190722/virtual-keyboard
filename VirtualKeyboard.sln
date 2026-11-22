@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{10946D37-8E72-4207-8D2F-67F5A4745DC4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualKeyboard.Core", "src\VirtualKeyboard.Core\VirtualKeyboard.Core.csproj", "{18DD58BA-67E5-4BEB-B939-8B1621E041DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualKeyboard.App", "src\VirtualKeyboard.App\VirtualKeyboard.App.csproj", "{6E8A859C-B801-43C2-B47C-F1C75D7630DD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{100BBD0A-9D24-4568-A1DD-D87C19CE31AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualKeyboard.Core.Tests", "tests\VirtualKeyboard.Core.Tests\VirtualKeyboard.Core.Tests.csproj", "{33301619-E3CC-4CD4-BE0C-74AB661D6C9E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{18DD58BA-67E5-4BEB-B939-8B1621E041DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18DD58BA-67E5-4BEB-B939-8B1621E041DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18DD58BA-67E5-4BEB-B939-8B1621E041DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18DD58BA-67E5-4BEB-B939-8B1621E041DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E8A859C-B801-43C2-B47C-F1C75D7630DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E8A859C-B801-43C2-B47C-F1C75D7630DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E8A859C-B801-43C2-B47C-F1C75D7630DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E8A859C-B801-43C2-B47C-F1C75D7630DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33301619-E3CC-4CD4-BE0C-74AB661D6C9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33301619-E3CC-4CD4-BE0C-74AB661D6C9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33301619-E3CC-4CD4-BE0C-74AB661D6C9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33301619-E3CC-4CD4-BE0C-74AB661D6C9E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{18DD58BA-67E5-4BEB-B939-8B1621E041DB} = {10946D37-8E72-4207-8D2F-67F5A4745DC4}
+		{6E8A859C-B801-43C2-B47C-F1C75D7630DD} = {10946D37-8E72-4207-8D2F-67F5A4745DC4}
+		{33301619-E3CC-4CD4-BE0C-74AB661D6C9E} = {100BBD0A-9D24-4568-A1DD-D87C19CE31AD}
+	EndGlobalSection
+EndGlobal

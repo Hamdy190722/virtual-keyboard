@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>VirtualKeyboard.Core</RootNamespace>
+    <AssemblyName>VirtualKeyboard.Core</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\english-words.txt" LogicalName="words-en.txt" />
+    <EmbeddedResource Include="Assets\arabic-words.txt" LogicalName="words-ar.txt" />
+  </ItemGroup>
+
+</Project>

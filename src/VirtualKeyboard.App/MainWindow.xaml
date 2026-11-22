@@ -1,0 +1,348 @@
+﻿<Window x:Class="VirtualKeyboard.App.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:shell="clr-namespace:System.Windows.Shell;assembly=PresentationFramework"
+        Title="Virtual Keyboard"
+        Width="1100"
+        MinWidth="720"
+        SizeToContent="Height"
+        WindowStyle="None"
+        ResizeMode="CanResize"
+        ShowInTaskbar="True"
+        ShowActivated="False"
+        Topmost="True"
+        Icon="Assets/VirtualKeyboard.ico"
+        Background="{DynamicResource WindowBrush}"
+        FontFamily="Segoe UI, Arial"
+        UseLayoutRounding="True"
+        SnapsToDevicePixels="True">
+
+    <shell:WindowChrome.WindowChrome>
+        <shell:WindowChrome CaptionHeight="0"
+                            ResizeBorderThickness="6"
+                            GlassFrameThickness="0"
+                            CornerRadius="14"
+                            UseAeroCaptionButtons="False" />
+    </shell:WindowChrome.WindowChrome>
+
+    <Window.Resources>
+        <Style x:Key="HeaderButton" TargetType="Button">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="{DynamicResource SubtleTextBrush}" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Width" Value="30" />
+            <Setter Property="Height" Value="26" />
+            <Setter Property="Margin" Value="2,0,0,0" />
+            <Setter Property="Focusable" Value="False" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                CornerRadius="6">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{DynamicResource KeyHoverBrush}" />
+                    <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="HeaderPillButton" TargetType="Button" BasedOn="{StaticResource HeaderButton}">
+            <Setter Property="Width" Value="Auto" />
+            <Setter Property="MinWidth" Value="34" />
+            <Setter Property="Padding" Value="10,0" />
+            <Setter Property="FontSize" Value="11.5" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
+            <Setter Property="Background" Value="{DynamicResource HeaderPillBrush}" />
+        </Style>
+
+        <Style x:Key="CloseHeaderButton" TargetType="Button" BasedOn="{StaticResource HeaderButton}">
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#DC2626" />
+                    <Setter Property="Foreground" Value="#FFFFFF" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="SuggestionButton" TargetType="Button">
+            <Setter Property="Background" Value="{DynamicResource KeyBrush}" />
+            <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource KeyBorderBrush}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Padding" Value="12,3" />
+            <Setter Property="Margin" Value="0,0,6,0" />
+            <Setter Property="FontSize" Value="13" />
+            <Setter Property="Focusable" Value="False" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="7"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{DynamicResource KeyHoverBrush}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <Border x:Name="RootBorder"
+            Background="{DynamicResource WindowBrush}"
+            BorderBrush="{DynamicResource BorderBrush}"
+            BorderThickness="1"
+            CornerRadius="14">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="28" />
+            </Grid.RowDefinitions>
+
+            <!-- Top theme accent hairline + subtle glass rim -->
+            <Border Grid.Row="0"
+                    Height="2"
+                    VerticalAlignment="Top"
+                    Background="{DynamicResource HeaderAccentBrush}"
+                    CornerRadius="14,14,0,0"
+                    IsHitTestVisible="False" />
+            <Border Grid.Row="0"
+                    Height="1"
+                    Margin="14,2,14,0"
+                    VerticalAlignment="Top"
+                    Background="{DynamicResource KeyTopHighlightBrush}"
+                    IsHitTestVisible="False" />
+
+            <!-- Header / drag area -->
+            <Border x:Name="HeaderBorder"
+                    Grid.Row="0"
+                    Background="Transparent"
+                    MouseLeftButtonDown="Header_MouseLeftButtonDown"
+                    MouseMove="Header_MouseMove"
+                    MouseLeftButtonUp="Header_MouseLeftButtonUp">
+                <Grid Margin="14,4,10,2">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <Image Source="Assets/VirtualKeyboard.ico"
+                               Width="18"
+                               Height="18"
+                               Margin="0,0,8,0"
+                               RenderOptions.BitmapScalingMode="HighQuality"
+                               IsHitTestVisible="False" />
+                        <TextBlock Text="Virtual Keyboard"
+                                   Foreground="{DynamicResource TextBrush}"
+                                   FontSize="12.5"
+                                   FontWeight="SemiBold"
+                                   VerticalAlignment="Center" />
+                        <TextBlock x:Name="LayoutNameText"
+                                   Foreground="{DynamicResource SubtleTextBrush}"
+                                   FontSize="11.5"
+                                   Margin="8,0,0,0"
+                                   VerticalAlignment="Center" />
+                        <Border x:Name="ThemeBadgeBorder"
+                                Margin="10,0,0,0"
+                                Padding="7,1.5"
+                                CornerRadius="5"
+                                Background="{DynamicResource ArmedBackgroundBrush}"
+                                BorderBrush="{DynamicResource AccentBrush}"
+                                BorderThickness="1"
+                                Visibility="Collapsed"
+                                VerticalAlignment="Center">
+                            <TextBlock x:Name="ThemeBadgeText"
+                                       Foreground="{DynamicResource SubtleTextBrush}"
+                                       FontSize="9.5"
+                                       FontWeight="Bold" />
+                        </Border>
+                    </StackPanel>
+
+                    <!-- Centered drag-handle pill -->
+                    <Border Width="42"
+                            Height="4"
+                            CornerRadius="2"
+                            Background="{DynamicResource HeaderPillBrush}"
+                            Opacity="0.85"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            IsHitTestVisible="False" />
+
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center">
+                        <Button x:Name="LayoutButton"
+                                Style="{StaticResource HeaderPillButton}"
+                                Margin="0,0,4,0"
+                                Click="LayoutButton_Click"
+                                ToolTip="Switch layout" />
+                        <Button x:Name="ThemeButton"
+                                Style="{StaticResource HeaderButton}"
+                                Click="ThemeButton_Click"
+                                ToolTip="Choose theme">
+                            <Path Data="M 4,4 A 2.2,2.2 0 1 1 4,4.1 M 10,4 A 2.2,2.2 0 1 1 10,4.1 M 4,10 A 2.2,2.2 0 1 1 4,10.1 M 10,10 A 2.2,2.2 0 1 1 10,10.1"
+                                  Width="14"
+                                  Height="14"
+                                  Stretch="Uniform"
+                                  Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"
+                                  StrokeThickness="1.7"
+                                  Fill="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}" />
+                        </Button>
+                        <Button Style="{StaticResource HeaderButton}"
+                                Click="SettingsButton_Click"
+                                ToolTip="Settings">
+                            <Path Data="M 7,4.5 A 2.5,2.5 0 1 0 7,9.5 A 2.5,2.5 0 1 0 7,4.5 M 7,1 L 7.8,2.6 L 9.5,2.1 L 9.7,3.8 L 11.4,4.2 L 10.8,5.8 L 12.2,7 L 10.8,8.2 L 11.4,9.8 L 9.7,10.2 L 9.5,11.9 L 7.8,11.4 L 7,13 L 6.2,11.4 L 4.5,11.9 L 4.3,10.2 L 2.6,9.8 L 3.2,8.2 L 1.8,7 L 3.2,5.8 L 2.6,4.2 L 4.3,3.8 L 4.5,2.1 L 6.2,2.6 Z"
+                                  Width="14"
+                                  Height="14"
+                                  Stretch="Uniform"
+                                  Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"
+                                  StrokeThickness="1.35"
+                                  StrokeLineJoin="Round" />
+                        </Button>
+                        <Button Style="{StaticResource HeaderButton}"
+                                Click="HideButton_Click"
+                                ToolTip="Minimize to taskbar (Ctrl+Alt+K)">
+                            <Path Data="M 1,5 L 11,5"
+                                  Width="11"
+                                  Height="10"
+                                  Stretch="Uniform"
+                                  Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"
+                                  StrokeThickness="1.7"
+                                  StrokeStartLineCap="Round"
+                                  StrokeEndLineCap="Round" />
+                        </Button>
+                        <Button Style="{StaticResource CloseHeaderButton}"
+                                Click="CloseButton_Click"
+                                ToolTip="Close Virtual Keyboard">
+                            <Path Data="M 1.5,1.5 L 9.5,9.5 M 9.5,1.5 L 1.5,9.5"
+                                  Width="10"
+                                  Height="10"
+                                  Stretch="Uniform"
+                                  Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"
+                                  StrokeThickness="1.7"
+                                  StrokeStartLineCap="Round"
+                                  StrokeEndLineCap="Round" />
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+            <!-- Suggestions bar -->
+            <Border x:Name="SuggestionsBorder"
+                    Grid.Row="1"
+                    Height="36"
+                    Margin="10,2,10,6"
+                    Background="{DynamicResource SuggestionBrush}"
+                    BorderBrush="{DynamicResource BorderBrush}"
+                    BorderThickness="1"
+                    CornerRadius="9">
+                <Grid>
+                    <TextBlock x:Name="SuggestionsIdleHint"
+                               Text="Suggestions appear as you type"
+                               Foreground="{DynamicResource SubtleTextBrush}"
+                               Opacity="0.45"
+                               FontSize="11.5"
+                               VerticalAlignment="Center"
+                               Margin="12,0"
+                               IsHitTestVisible="False" />
+                    <ScrollViewer x:Name="SuggestionsScroll"
+                                  HorizontalScrollBarVisibility="Hidden"
+                                  VerticalScrollBarVisibility="Disabled"
+                                  Padding="6,4"
+                                  Visibility="Collapsed">
+                        <StackPanel x:Name="SuggestionsHost" Orientation="Horizontal" />
+                    </ScrollViewer>
+                </Grid>
+            </Border>
+
+            <!-- Recessed Keybed Well + Overlays -->
+            <Border Grid.Row="2"
+                    Background="{DynamicResource KeyDeckBrush}"
+                    BorderBrush="{DynamicResource BorderBrush}"
+                    BorderThickness="1"
+                    CornerRadius="11"
+                    Margin="10,0,10,6"
+                    Padding="6">
+                <Grid>
+                    <StackPanel x:Name="RowsHost"
+                                VerticalAlignment="Top" />
+
+                    <Border x:Name="AlternatesBorder"
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Center"
+                            Margin="0,4,0,0"
+                            Padding="8,5"
+                            Background="{DynamicResource SuggestionBrush}"
+                            BorderBrush="{DynamicResource AccentBrush}"
+                            BorderThickness="1"
+                            CornerRadius="9"
+                            Visibility="Collapsed"
+                            Panel.ZIndex="10">
+                        <Border.Effect>
+                            <DropShadowEffect Color="#000000" BlurRadius="16" ShadowDepth="4" Opacity="0.45" />
+                        </Border.Effect>
+                        <StackPanel x:Name="AlternatesHost" Orientation="Horizontal" />
+                    </Border>
+
+                    <Border x:Name="ThemePickerBorder"
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Right"
+                            Margin="0,4,4,0"
+                            Padding="10,8"
+                            Background="{DynamicResource SuggestionBrush}"
+                            BorderBrush="{DynamicResource AccentBrush}"
+                            BorderThickness="1"
+                            CornerRadius="11"
+                            Visibility="Collapsed"
+                            Panel.ZIndex="11">
+                        <Border.Effect>
+                            <DropShadowEffect Color="#000000" BlurRadius="18" ShadowDepth="4" Opacity="0.50" />
+                        </Border.Effect>
+                        <WrapPanel x:Name="ThemePickerHost" MaxWidth="720" />
+                    </Border>
+                </Grid>
+            </Border>
+
+            <!-- Slim modern footer -->
+            <Grid Grid.Row="3" Margin="14,0,14,6">
+                <StackPanel x:Name="StatusPillsHost"
+                            Orientation="Horizontal"
+                            VerticalAlignment="Center"
+                            Margin="0,0,110,0" />
+                <TextBlock x:Name="StatusText"
+                           Foreground="{DynamicResource SubtleTextBrush}"
+                           FontSize="11"
+                           Opacity="0.80"
+                           Margin="0,0,110,0"
+                           TextTrimming="CharacterEllipsis"
+                           VerticalAlignment="Center" />
+                <Border Background="{DynamicResource HeaderPillBrush}"
+                        CornerRadius="4"
+                        Padding="7,1.5"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center">
+                    <TextBlock x:Name="HotkeyText"
+                               Foreground="{DynamicResource SubtleTextBrush}"
+                               FontSize="10.5"
+                               FontWeight="Medium"
+                               Text="Ctrl+Alt+K" />
+                </Border>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

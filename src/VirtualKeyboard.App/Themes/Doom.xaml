@@ -1,0 +1,53 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <!-- Doctor Doom (Marvel): Latverian cloak chassis, gunmetal armor keycaps, emerald & antique gold -->
+    <LinearGradientBrush x:Key="WindowBrush" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#0C1813" Offset="0" />
+        <GradientStop Color="#07100C" Offset="1" />
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="HeaderAccentBrush" StartPoint="0,0" EndPoint="1,0">
+        <GradientStop Color="#10B981" Offset="0" />
+        <GradientStop Color="#EAB308" Offset="0.5" />
+        <GradientStop Color="#10B981" Offset="1" />
+    </LinearGradientBrush>
+    <SolidColorBrush x:Key="BorderBrush" Color="#244738" />
+    <SolidColorBrush x:Key="KeyDeckBrush" Color="#060D0A" />
+    <SolidColorBrush x:Key="KeyBorderBrush" Color="#425850" />
+    <LinearGradientBrush x:Key="KeyBrush" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#2D3734" Offset="0" />
+        <GradientStop Color="#1F2724" Offset="1" />
+    </LinearGradientBrush>
+    <SolidColorBrush x:Key="KeyHoverBrush" Color="#1B4333" />
+    <SolidColorBrush x:Key="KeyPressedBrush" Color="#103024" />
+    <SolidColorBrush x:Key="KeyBevelBrush" Color="#0B120F" />
+    <SolidColorBrush x:Key="KeyTopHighlightBrush" Color="#24FFFFFF" />
+    <LinearGradientBrush x:Key="ModifierBrush" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#123225" Offset="0" />
+        <GradientStop Color="#0D251B" Offset="1" />
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="EnterKeyBrush" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#10B981" Offset="0" />
+        <GradientStop Color="#059669" Offset="1" />
+    </LinearGradientBrush>
+    <SolidColorBrush x:Key="EnterKeyHoverBrush" Color="#34D399" />
+    <SolidColorBrush x:Key="EnterKeyTextBrush" Color="#041C12" />
+    <SolidColorBrush x:Key="TextBrush" Color="#ECFDF5" />
+    <SolidColorBrush x:Key="SubtleTextBrush" Color="#8DC9B0" />
+    <SolidColorBrush x:Key="AccentBrush" Color="#10B981" />
+    <SolidColorBrush x:Key="AccentTextBrush" Color="#041C12" />
+    <SolidColorBrush x:Key="ArmedBackgroundBrush" Color="#143829" />
+    <SolidColorBrush x:Key="ArmedBorderBrush" Color="#EAB308" />
+    <SolidColorBrush x:Key="SuggestionBrush" Color="#0B1913" />
+    <SolidColorBrush x:Key="HeaderPillBrush" Color="#244738" />
+    <SolidColorBrush x:Key="SpaceBarAccentBrush" Color="#10B981" />
+    <SolidColorBrush x:Key="ControlBackgroundBrush" Color="#13251D" />
+    <SolidColorBrush x:Key="ControlBorderBrush" Color="#2F5E4B" />
+
+    <Color x:Key="KeyGlowColor">#10B981</Color>
+    <sys:Double x:Key="KeyGlowOpacity">0.38</sys:Double>
+    <sys:Double x:Key="KeyGlowBlur">10</sys:Double>
+    <Thickness x:Key="KeyBorderThickness">1.2</Thickness>
+    <CornerRadius x:Key="KeyCornerRadius">6</CornerRadius>
+    <sys:String x:Key="ThemeBadgeText">LATVERIA</sys:String>
+</ResourceDictionary>
